@@ -1,17 +1,19 @@
 import 'package:card_holder/pages/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
+      routerConfig: _router,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.deepPurple,
@@ -19,8 +21,17 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-
-      home: HomePage(),
     );
   }
+
+  final _router = GoRouter(
+    debugLogDiagnostics: true,
+    routes: [
+      GoRoute(
+        name: HomePage.routeName,
+        path: HomePage.routeName,
+        builder: (context, state) => const HomePage(),
+      ),
+    ],
+  );
 }
