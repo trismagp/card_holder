@@ -1,4 +1,5 @@
 import 'package:card_holder/pages/home_page.dart';
+import 'package:card_holder/pages/scan_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -31,6 +32,13 @@ class MyApp extends StatelessWidget {
         name: HomePage.routeName,
         path: HomePage.routeName,
         builder: (context, state) => const HomePage(),
+        routes: [
+          GoRoute(
+            name: ScanPage.routeName,
+            path: ScanPage.routeName,
+            builder: (context, state) => ScanPage(),
+          ),
+        ],
       ),
     ],
   );
